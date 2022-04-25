@@ -1,0 +1,25 @@
+version: '3'
+services:
+  weblate:
+    labels:
+      - "traefik.http.routers.weblate.rule=Host(`weblate.makedeb.org`)"
+      - "traefik.enable=true"
+volumes:
+  weblate-data:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: "${PWD}/data/weblate"
+  postgres-data:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: "${PWD}/data/postgres"
+  redis-data:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: "${PWD}/data/redis"

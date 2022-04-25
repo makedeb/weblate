@@ -52,8 +52,15 @@ find ./ -mindepth 1 -maxdepth 1 -not -path './data' -exec rm -rf '{}' +
 cd -
 find ./ -mindepth 1 -maxdepth 1 -not -path './data' -exec cp -R '{}' "${deploy_dir}/{}" \;
 
-# Go to the deploy directory and bring the containers up.
+# Go to the deploy directory, create needed directories, and bring the containers up.
 cd "${deploy_dir}"
+
+for folder in data/{weblate,postgres,redis}; do
+    if ! [[ -d "${folder}" ]]; then
+        mkdir "${folder}"
+    fi
+done
+
 ./service.sh start
 
 # vim: set sw=4 expandtab:
