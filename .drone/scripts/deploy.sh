@@ -57,7 +57,7 @@ cd "${deploy_dir}"
 
 for folder in data/{weblate,postgres,redis}; do
     if ! [[ -d "${folder}" ]]; then
-        mkdir "${folder}"
+        mkdir -p "${folder}"
     fi
 done
 
