@@ -28,9 +28,13 @@ WEBLATE_GITHUB_TOKEN=${weblate_github_token}
 WEBLATE_DEFAULT_COMMITTER_EMAIL=kavplex@hunterwittenborn.com
 WEBLATE_DEFAULT_COMMITTER_NAME=Kavplex
 WEBLATE_AUTO_UPDATE=true
+WEBLATE_ALLOWED_HOSTS=*
 POSTGRES_PASSWORD=${weblate_postgres_password}
 POSTGRES_USER=user
 POSTGRES_DATABASE=weblate
+POSTGRES_HOST=database
+REDIS_HOST=cache
+REDIS_PORT=6379
 EOF
 
 # If the deploy directory doesn't exist, create it.
