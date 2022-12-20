@@ -10,14 +10,14 @@ touch environment
 
 # Generate our env file.
 cat <<EOF > environment
-WEBLATE_EMAIL_HOST=mailcow.${hw_url}
+WEBLATE_EMAIL_HOST=smtp.gmail.com
 WEBLATE_EMAIL_PORT=465
-WEBLATE_EMAIL_HOST_USER=weblate@${makedeb_url}
+WEBLATE_EMAIL_HOST_USER=kavplex@${hw_url}
 WEBLATE_EMAIL_HOST_PASSWORD=${weblate_email_password}
 WEBLATE_EMAIL_USE_TLS=0
 WEBLATE_EMAIL_USE_SSL=1
 WEBLATE_SERVER_EMAIL=weblate@${makedeb_url}
-WEBLATE_DEFAULT_FROM_EMAIL=weblate@${makedeb_url}
+WEBLATE_DEFAULT_FROM_EMAIL=Weblate <weblate@${makedeb_url}>
 WEBLATE_SITE_DOMAIN=weblate.${makedeb_url}
 WEBLATE_ADMIN_NAME=Hunter Wittenborn
 WEBLATE_ADMIN_EMAIL=hunter@${hw_url}
