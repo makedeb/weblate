@@ -1,3 +1,7 @@
+# Copyright © Michal Čihař <michal@weblate.org>
+#
+# SPDX-License-Identifier: CC0-1.0
+
 # This file is maintained in https://github.com/WeblateOrg/meta/
 # and generated from .github/ISSUE_TEMPLATE/snippets there.
 name: Support question
@@ -56,6 +60,8 @@ body:
       In case you observed server error or crash, please see
       [the debugging documentation](https://docs.weblate.org/en/latest/contributing/debugging.html)
       for information how to obtain that.
+
+      This will be rendered as Python traceback automatically.
     render: pytb
 - type: textarea
   id: additional

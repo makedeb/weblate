@@ -4,6 +4,7 @@ services:
     image: weblate/weblate
     volumes:
     - weblate-data:/app/data
+    - weblate-cache:/app/cache
     env_file:
     - ./environment
     restart: always
@@ -14,14 +15,14 @@ services:
       WEBLATE_ENABLE_HTTPS: 1
       WEBLATE_IP_PROXY_HEADER: HTTP_X_FORWARDED_FOR
   database:
-    image: postgres:14-alpine
+    image: postgres:15-alpine
     env_file:
     - ./environment
     volumes:
     - postgres-data:/var/lib/postgresql/data
     restart: always
   cache:
-    image: redis:6-alpine
+    image: redis:7-alpine
     restart: always
     command: [redis-server, --save, '60', '1']
     volumes:
@@ -35,10 +36,10 @@ services:
     environment:
       STAGE: production
       PROXY_READ_TIMEOUT: 3600
-      CLIENT_MAX_BODY_SIZE: 100M
     volumes:
     - ssl-certs:/var/lib/https-portal
 volumes:
+  weblate-cache: {}
   weblate-data: {}
   postgres-data: {}
   redis-data: {}

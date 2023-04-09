@@ -2,10 +2,9 @@ version: '3'
 services:
   weblate:
     image: weblate/weblate
-    tmpfs:
-    - /app/cache
     volumes:
     - weblate-data:/app/data
+    - weblate-cache:/app/cache
     env_file:
     - ./environment
     restart: always
@@ -13,19 +12,20 @@ services:
     - database
     - cache
   database:
-    image: postgres:14-alpine
+    image: postgres:15-alpine
     env_file:
     - ./environment
     volumes:
     - postgres-data:/var/lib/postgresql/data
     restart: always
   cache:
-    image: redis:6-alpine
+    image: redis:7-alpine
     restart: always
     command: [redis-server, --save, '60', '1']
     volumes:
     - redis-data:/data
 volumes:
+  weblate-cache: {}
   weblate-data: {}
   postgres-data: {}
   redis-data: {}
